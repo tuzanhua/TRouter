@@ -1,0 +1,8 @@
+1.注意创建 注解处理器以及 Annotation lib 的时候是java lib
+2.创建注解处理器的时候    新版本需要下面两个 gradle 5.0+
+ 如果运行的时候 在 class 下面有 \build\classes\java\main\META-INF\services\javax.annotation.processing.Processor  说明处理器会被调用
+        compileOnly 'com.google.auto.service:auto-service:1.0-rc5'
+         annotationProcessor 'com.google.auto.service:auto-service:1.0-rc5'
+ 3. 注解处理器使用 : getAnnotationTypes 返回不能为null 也不能为super 要不然它不会执行 processor 方法
+ 4. 类 需要加 @AutoService
+ 5 引用处理器Lib 的module  annotationProcessor project(path: ':annacompile')  需要使用 : annotationProcessor
